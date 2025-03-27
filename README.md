@@ -4,7 +4,7 @@ This repository provides five benchmarks we selected from FalBenchGen and the ne
 
 ## Quick Links
 - [Five Benchmarks and Their Specifications](##five-benchmarks-and-their-specifications)
-- [View Benchmark Examples](./benchmarks/)
+- [Benchmark](./benchmark/)
 - [Breach Demo](./scripts/)
 - [S-TaLiRo](./scripts/)
 
