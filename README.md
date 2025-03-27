@@ -9,7 +9,6 @@ The naming convention for these benchmarks is as follows: phi[Specification Inde
 
 | Benchmark | Index | Specification |
 | ----- | ----- | ----- |
-| phi1_m1_vr01_k3_2 | phi1 | □ <sub>[0,24]</sub> (b < 20) |
 | phi1_m2_vr001_k5_2 | phi1 | □ <sub>[0,24]</sub> (b < 20) |
 | phi2_m1_vr01_k2_2 | phi2 | □ <sub>[0,18]</sub> (b > 90 ∨ ◊ <sub>[0,6]</sub> (b < 50)) |
 | phi3_m2_vr001_k3_2 | phi3 | ◊ <sub>[6,12]</sub> (b > 10) -> □ <sub>[18,24]</sub> (b > -10) |
@@ -98,6 +97,49 @@ The naming convention for these benchmarks is as follows: phi[Specification Inde
 
 ## Repository Structure Tree
 
+```
+.
+├── README.md
+├── benchmark
+│   ├── lstm
+│   │   ├── phi1_m2_vr001_k5_2.mat
+│   │   ├── phi2_m1_vr01_k2_2.mat
+│   │   ├── phi3_m2_vr001_k3_2.mat
+│   │   ├── phi4_m2_vr001_k5_3.mat
+│   │   └── phi5_m1_vr01_k5_2.mat
+│   └── simulink
+│       ├── phi1_m2_vr001_k5_2.slx
+│       ├── phi2_m1_vr01_k2_2.slx
+│       ├── phi3_m2_vr001_k3_2.slx
+│       ├── phi4_m2_vr001_k5_3.slx
+│       └── phi5_m1_vr01_k5_2.slx
+├── result
+│   ├── breach_phi1_m2_vr001_k5_2.txt
+│   ├── breach_phi2_m1_vr01_k2_2.txt
+│   ├── breach_phi3_m2_vr001_k3_2.txt
+│   ├── breach_phi4_m2_vr001_k5_3.txt
+│   └── breach_phi5_m1_vr01_k5_2.txt
+├── scripts
+│   ├── breach_lstm
+│   │   ├── breach_lstm_phi1.m
+│   │   ├── breach_lstm_phi2.m
+│   │   ├── breach_lstm_phi3.m
+│   │   ├── breach_lstm_phi4.m
+│   │   ├── breach_lstm_phi5.m
+│   │   └── traces_signal_gen.m
+│   └── breach_simulink
+│       ├── breach_simulink_phi1.m
+│       └── lstm2Sim.m
+└── utils
+    ├── CQueue.m
+    ├── MCTS.m
+    ├── MCTS_Node.m
+    ├── Region.m
+    ├── myState.m
+    ├── my_treelayout.m
+    ├── my_treeplot.m
+    └── processCPSData.m
+```
 
 ## Usage
 
