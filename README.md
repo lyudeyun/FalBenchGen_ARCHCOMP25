@@ -6,7 +6,7 @@ This repository provides five benchmarks we selected from FalBenchGen and the ne
 - [Five Benchmarks and Their Specifications](##five-benchmarks-and-their-specifications)
 - [Benchmark](./benchmark/)
 - [Breach Demo](./scripts/)
-- [S-TaLiRo](./scripts/)
+- [S-TaLiRo Demo](./scripts/staliro_simulink/)
 
 
 ## Five Benchmarks and Their Specifications
@@ -25,9 +25,11 @@ The naming convention for these benchmarks is as follows: phi[Specification Inde
 ## Deyun's Software and Hardware Dependencies
 
 - Macbook Pro 2022 with M2 Max Chip
-- Matlab/Simulink 2024b
-- 
+- Matlab 2024b
+    - Simulink
+    - [Deep Learning Toolbox](https://www.mathworks.com/products/deep-learning.html)
 - Breach Version: 1.8.0
+- S-TaLiRo
 
 ## Falsification Parameter Setup
 
@@ -71,9 +73,11 @@ The naming convention for these benchmarks is as follows: phi[Specification Inde
 │   │   ├── breach_lstm_phi4.m
 │   │   ├── breach_lstm_phi5.m
 │   │   └── traces_signal_gen.m
-│   └── breach_simulink
-│       ├── breach_simulink_phi1.m
-│       └── lstm2Sim.m
+│   ├── breach_simulink
+│   │   ├── breach_simulink_phi1.m
+│   │   └── lstm2Sim.m
+│   └── staliro_simulink
+│       └── staliro_simulink_phi1.m
 └── utils
     ├── CQueue.m
     ├── MCTS.m
@@ -87,7 +91,7 @@ The naming convention for these benchmarks is as follows: phi[Specification Inde
 
 ## Usage
 
-### Installation
+### Breach Installation
 
 - Clone the repository of `breach`
     - Use `git clone git@github.com:Fenking/FalBenchGen.git`
@@ -101,22 +105,29 @@ The naming convention for these benchmarks is as follows: phi[Specification Inde
 - Setting of SA Algorithm (Fix a bug in `Breach 1.8.0`)
     1. `vi /breach/Core/Algos/@BreachProblem/BreachProblem.m`;
     2. Replace all the `saoptimset` to `optimset` in the function `solver_opt = setup_simulannealbnd(this)`.
-  
+
+### S-TaLiRo Installation
+
+
 ### Reproduction of Experimental Results
 
 There are two ways to use our benchmark. Here, we use `Breach` to introduce the steps for performing falsification using our benchmarks.
-1. falsification based on LSTM
+1. Falsification based on LSTM
   - Navigate to folder `/scripts/breach_lstm`;
   - Open the script `breach_lstm_[Specificaiton Index].m`;
   - eplace the path of our repository and the path of `breach` with yours;
   - Run the script `breach_lstm_[Specificaiton Index].m`
-2. falsification based on the simulink model embedded with an LSTM
-  - Navigate to folder `/scripts/breach_simulink`;
-  - Open the script `breach_simulink_[Specificaiton Index].m`;
-  - Replace the path of our repository and the path of `breach` with yours;
-  - Run the script `breach_simulink_[Specificaiton Index].m` (Here we only provide the script for `phi1`)
-
-
+2. Falsification based on the simulink model embedded with an LSTM
+  - Breach
+     - Navigate to folder `/scripts/breach_simulink`;
+     - Open the script `breach_simulink_[Specificaiton Index].m`;
+     - Replace the path of our repository and the path of `breach` with yours;
+     - Run the script `breach_simulink_[Specificaiton Index].m` (Here we only provide the script for `phi1`)
+  - S-TaLiRo
+     - Navigate to folder `/scripts/staliro_simulink`;
+     - Open the script `staliro_simulink_[Specificaiton Index].m`;
+     - Replace the path of our repository and the path of `breach` with yours;
+     - Run the script `staliro_simulink_[Specificaiton Index].m` (Here we only provide the script for `phi1`)
 
 
 
