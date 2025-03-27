@@ -1,6 +1,13 @@
 # FalBenchGen_ARCH-COMP2025
 
-This repository provides five benchmarks we selected and the necessary scripts for the falsification category of ARCH-COMP 2025.
+This repository provides five benchmarks we selected from FalBenchGen and the necessary scripts for the falsification category of ARCH-COMP 2025.
+
+## Quick Links
+- [Five Benchmarks and Their Specifications](##five-benchmarks-and-their-specifications)
+- [Benchmark](./benchmark/)
+- [Breach Demo](./scripts/)
+- [S-TaLiRo](./scripts/)
+
 
 ## Five Benchmarks and Their Specifications
 
@@ -14,19 +21,12 @@ The naming convention for these benchmarks is as follows: phi[Specification Inde
 | phi3_m2_vr001_k3_2 | phi3 | ◊ <sub>[6,12]</sub> (b > 10) -> □ <sub>[18,24]</sub> (b > -10) |
 | phi4_m2_vr001_k5_3 | phi4 | □ <sub>[0,20]</sub> (□ <sub>[0,5]</sub> ($b_1$ ≤ 20) ∨ ◊ <sub>[0,5]</sub> ($b_2$ ≥ 40)) |
 | phi5_m1_vr01_k5_2 | phi5 | □ <sub>[0,18]</sub> (◊ <sub>[0,2]</sub> (¬(□ <sub>[0,1]</sub> ($b_1$ ≥ 9)) ∨ □ <sub>[1,5]</sub>($b_2$ ≥ 9))) |
-
-## Falsfication Tool We Used
-
-- Breach, including four falsification algorithms:
-  - CM-AS
-  - SA (Simulated Annealing)
-  - MCTS (Monte-Carlo Tree Search)
-  - Random
  
-## Software and Hardware Dependencies
+## Deyun's Software and Hardware Dependencies
 
 - Macbook Pro 2022 with M2 Max Chip
 - Matlab/Simulink 2024b
+- 
 - Breach Version: 1.8.0
 
 ## Falsification Parameter Setup
@@ -38,62 +38,6 @@ The naming convention for these benchmarks is as follows: phi[Specification Inde
 - Number of control points: 4
 - Falsification trials: 30
 - Falsification budget: 1000
-
-## Experimental Results
-
-- phi1_m1_vr01_k3_2
-
-| Algo | SR | Time | #sim |
-| ----- | ----- | ----- | ----- |
-| CMA-ES |  |  |  |
-| SA |  |  |  |  
-| MCTS |  |  |  |  
-| Random |  |  |  |  
-
-- phi1_m2_vr001_k5_2
-
-| Algo | SR | Time | #sim |
-| ----- | ----- | ----- | ----- |
-| CMA-ES |  |  |  |
-| SA |  |  |  |  
-| MCTS |  |  |  |  
-| Random |  |  |  |  
-
-- phi2_m1_vr01_k2_2
-
-| Algo | SR | Time | #sim |
-| ----- | ----- | ----- | ----- |
-| CMA-ES |  |  |  |
-| SA |  |  |  |  
-| MCTS |  |  |  |  
-| Random |  |  |  |  
-
-- phi3_m2_vr001_k3_2
-
-| Algo | SR | Time | #sim |
-| ----- | ----- | ----- | ----- |
-| CMA-ES |  |  |  |
-| SA |  |  |  |  
-| MCTS |  |  |  |  
-| Random |  |  |  |  
-
-- phi4_m2_vr001_k5_3
-
-| Algo | SR | Time | #sim |
-| ----- | ----- | ----- | ----- |
-| CMA-ES |  |  |  |
-| SA |  |  |  |  
-| MCTS |  |  |  |  
-| Random |  |  |  |  
-
-- phi5_m1_vr01_k5_2
-
-| Algo | SR | Time | #sim |
-| ----- | ----- | ----- | ----- |
-| CMA-ES |  |  |  |
-| SA |  |  |  |  
-| MCTS |  |  |  |  
-| Random |  |  |  |  
 
 ## Repository Structure Tree
 
@@ -143,14 +87,34 @@ The naming convention for these benchmarks is as follows: phi[Specification Inde
 
 ## Usage
 
-
 ### Installation
 
-
+- Clone the repository of `breach`
+    - Use `git clone git@github.com:Fenking/FalBenchGen.git`
+- Install [Breach](https://github.com/decyphir/breach).
+    1. `git clone -b 1.8.0 git@github.com:decyphir/breach.git`
+    2. Start matlab, set up a C/C++ compiler using the command `mex -setup C++`. (Refer to [here](https://www.mathworks.com/help/matlab/matlab_external/changing-default-compiler.html) for more details.)
+    3. Navigate to `breach/` in Matlab commandline, and run `InstallBreach`
+- Setting of CMAES Algorithm (Modify the seed of CMA-ES algorithm for falsification)
+    1. `vi /breach/Core/Algos/@BreachProblem/BreachProblem.m`;
+    2. Replace the line `solver_opt.Seed = 0` with `solver_opt.Seed = round(rem(now, 1)*1000000)` in the `setup_cmaes` function.
+- Setting of SA Algorithm (Fix a bug in `Breach 1.8.0`)
+    1. `vi /breach/Core/Algos/@BreachProblem/BreachProblem.m`;
+    2. Replace all the `saoptimset` to `optimset` in the function `solver_opt = setup_simulannealbnd(this)`.
+  
 ### Reproduction of Experimental Results
 
-
-
+There are two ways to use our benchmark. Here, we use `Breach` to introduce the steps for performing falsification using our benchmarks.
+1. falsification based on LSTM
+  - Navigate to folder `/scripts/breach_lstm`;
+  - Open the script `breach_lstm_[Specificaiton Index].m`;
+  - eplace the path of our repository and the path of `breach` with yours;
+  - Run the script `breach_lstm_[Specificaiton Index].m`
+2. falsification based on the simulink model embedded with an LSTM
+  - Navigate to folder `/scripts/breach_simulink`;
+  - Open the script `breach_simulink_[Specificaiton Index].m`;
+  - Replace the path of our repository and the path of `breach` with yours;
+  - Run the script `breach_simulink_[Specificaiton Index].m` (Here we only provide the script for `phi1`)
 
 
 
