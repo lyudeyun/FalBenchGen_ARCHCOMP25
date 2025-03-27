@@ -10,7 +10,7 @@ addpath(genpath('/Users/ldy/git/CPSTutorial/breach'));
 % phi3_m2_vr001_k3_2
 % phi4_m2_vr001_k5_3
 % phi5_m1_vr01_k5_2
-lstmName = 's3a4_k2_2';
+lstmName = 'phi2_m1_vr01_k2_2';
 inputNum = 1;
 outputNum = 1;
 % spec = 'alw_[0,24](b[t] < 20)';
@@ -27,7 +27,7 @@ inputRange = [[0.0, 1.0]];
 trials = 30; % falsification trials
 InitBreach;
 
-name = fullfile([home, '/benchmark/', lstmName, '.mat']);
+name = fullfile([home, '/benchmark/lstm/', lstmName, '.mat']);
 
 disp([newline 'breach starts configuring ' lstmName]);
 net = load(name);

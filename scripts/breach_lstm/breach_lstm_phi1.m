@@ -27,7 +27,7 @@ inputRange = [[0.0, 1.0];[0.0, 1.0]];
 trials = 30; % falsification trials
 InitBreach;
 
-name = fullfile([home, '/benchmark/', lstmName, '.mat']);
+name = fullfile([home, '/benchmark/lstm/', lstmName, '.mat']);
 
 disp([newline 'breach starts configuring ' lstmName]);
 net = load(name);
