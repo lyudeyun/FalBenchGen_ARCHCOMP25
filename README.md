@@ -1,6 +1,6 @@
 # FalBenchGen_ARCH-COMP2025
 
-This repository provides five benchmarks we selected and the necessary scripts for the falsification category of ARCH-COMP 2025.
+This repository provides five benchmarks we selected from FalBenchGen and the necessary scripts for the falsification category of ARCH-COMP 2025.
 
 ## Five Benchmarks and Their Specifications
 
@@ -23,10 +23,11 @@ The naming convention for these benchmarks is as follows: phi[Specification Inde
   - MCTS (Monte-Carlo Tree Search)
   - Random
  
-## Software and Hardware Dependencies
+## Deyun's Software and Hardware Dependencies
 
 - Macbook Pro 2022 with M2 Max Chip
 - Matlab/Simulink 2024b
+- 
 - Breach Version: 1.8.0
 
 ## Falsification Parameter Setup
@@ -41,14 +42,7 @@ The naming convention for these benchmarks is as follows: phi[Specification Inde
 
 ## Experimental Results
 
-- phi1_m1_vr01_k3_2
-
-| Algo | SR | Time | #sim |
-| ----- | ----- | ----- | ----- |
-| CMA-ES |  |  |  |
-| SA |  |  |  |  
-| MCTS |  |  |  |  
-| Random |  |  |  |  
+The following falsification results are based on the `/scripts/breach_lstm/breach_lstm_[].m` script.
 
 - phi1_m2_vr001_k5_2
 
@@ -143,11 +137,36 @@ The naming convention for these benchmarks is as follows: phi[Specification Inde
 
 ## Usage
 
-
 ### Installation
 
-
+- Clone the repository of `breach`
+    - Use `git clone git@github.com:Fenking/FalBenchGen.git`
+- Install [Breach](https://github.com/decyphir/breach).
+    1. `git clone -b 1.8.0 git@github.com:decyphir/breach.git`
+    2. Start matlab, set up a C/C++ compiler using the command `mex -setup C++`. (Refer to [here](https://www.mathworks.com/help/matlab/matlab_external/changing-default-compiler.html) for more details.)
+    3. Navigate to `breach/` in Matlab commandline, and run `InstallBreach`
+- Setting of CMAES Algorithm (Modify the seed of CMA-ES algorithm for falsification)
+    1. `vi /breach/Core/Algos/@BreachProblem/BreachProblem.m`;
+    2. Replace the line `solver_opt.Seed = 0` with `solver_opt.Seed = round(rem(now, 1)*1000000)` in the `setup_cmaes` function.
+- Setting of SA Algorithm (Fix a bug in `Breach 1.8.0`)
+    1. `vi /breach/Core/Algos/@BreachProblem/BreachProblem.m`;
+    2. Replace all the `saoptimset` to `optimset` in the function `solver_opt = setup_simulannealbnd(this)`.
+  
 ### Reproduction of Experimental Results
+
+There are two ways to use our benchmark. Here, we use `Breach` to introduce the steps for performing falsification using our benchmarks.
+1. falsification based on LSTM
+  - Navigate to folder `/scripts/breach_lstm`;
+  - Open the script `breach_lstm_[Specificaiton Index].m`;
+  - eplace the path of our repository and the path of `breach` with yours;
+  - Run the script `breach_lstm_[Specificaiton Index].m`
+2. falsification based on the simulink model embedded with an LSTM
+  - Navigate to folder `/scripts/breach_simulink`;
+  - Open the script `breach_simulink_[Specificaiton Index].m`;
+  - Replace the path of our repository and the path of `breach` with yours;
+  - Run the script `breach_simulink_[Specificaiton Index].m` (Here we only provide the script for `phi1`)
+
+
 
 
 
