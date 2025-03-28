@@ -19,10 +19,10 @@ spec = 'alw_[0,18](b[t] > 90 or ev_[0,6](b[t] < 50))';
 % spec = 'alw_[0,20](alw_[0,5](b1[t]<=20) or ev_[0,5](b2[t]>=40))';
 % spec = 'alw_[0,18](ev_[0,2](not(alw_[0,1](b1[t] >= 9)) or alw_[1,5](b2[t]>= 9)))';
 phi = STL_Formula('phi',spec);
-T = 23.0;
+T = 24.0;
 Ts = 1;
 inSpan = 6;
-ctrPointNum = (T+1)/inSpan;
+ctrPointNum = T/inSpan;
 inputRange = [[0.0, 1.0]];
 trials = 30; % falsification trials
 InitBreach;
