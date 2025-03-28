@@ -19,8 +19,8 @@ The naming convention for these benchmarks is as follows: phi[Specification Inde
 | phi1_m2_vr001_k5_2 | phi1 | □ <sub>[0,24]</sub> (b < 20) |
 | phi2_m1_vr01_k2_2 | phi2 | □ <sub>[0,18]</sub> (b > 90 ∨ ◊ <sub>[0,6]</sub> (b < 50)) |
 | phi3_m2_vr001_k3_2 | phi3 | ◊ <sub>[6,12]</sub> (b > 10) -> □ <sub>[18,24]</sub> (b > -10) |
-| phi4_m2_vr001_k5_3 | phi4 | □ <sub>[0,20]</sub> (□ <sub>[0,5]</sub> ($b_1$ ≤ 20) ∨ ◊ <sub>[0,5]</sub> ($b_2$ ≥ 40)) |
-| phi5_m1_vr01_k5_2 | phi5 | □ <sub>[0,18]</sub> (◊ <sub>[0,2]</sub> (¬(□ <sub>[0,1]</sub> ($b_1$ ≥ 9)) ∨ □ <sub>[1,5]</sub>($b_2$ ≥ 9))) |
+| phi4_m2_vr001_k5_3 | phi4 | □ <sub>[0,19]</sub> (□ <sub>[0,5]</sub> ($b_1$ ≤ 20) ∨ ◊ <sub>[0,5]</sub> ($b_2$ ≥ 40)) |
+| phi5_m1_vr01_k5_2 | phi5 | □ <sub>[0,17]</sub> (◊ <sub>[0,2]</sub> (¬(□ <sub>[0,1]</sub> ($b_1$ ≥ 9)) ∨ □ <sub>[1,5]</sub>($b_2$ ≥ 9))) |
  
 ## Deyun's Software and Hardware Dependencies
 
