@@ -34,7 +34,7 @@ The naming convention for these benchmarks is as follows: phi[Specification Inde
 ## Falsification Parameter Setup
 
 - Simulation time: 24 (secs)
-- Time step size: 1 (sec)
+- Sample time: 1 (sec)
 - External input number: 1 or 2
 - Input range: [0, 1]
 - Number of control points: 4
